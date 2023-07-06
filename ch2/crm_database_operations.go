@@ -1,6 +1,9 @@
 package main
 
-import "database/sql"
+import (
+	"database/sql"
+	_ "github.com/mattn/go-sqlite3"
+)
 
 type Customer struct {
 	CustomerId   int
@@ -97,8 +100,4 @@ func DeleteCustomer(customer Customer) {
 	}
 	_, _ = del.Exec(customer.CustomerId)
 	defer database.Close()
-}
-
-func main() {
-
 }
